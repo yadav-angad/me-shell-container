@@ -1,0 +1,16 @@
+.population-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.population-table th,
+.population-table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.population-table th {
+  background-color: #f2f2f2;
+}

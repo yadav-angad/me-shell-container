@@ -3,14 +3,11 @@ import { Button, Card } from "@mui/material";
 import { useSelector, useDispatch } from 'react-redux';
 import { store } from './store/store';
 const MFEIndia = React.lazy(() => import("MfeIndia/MfeIndia"));
-// const MFEUSA = React.lazy(() => import("MfeUsa/MfeUsa"));
+const MFEUSA = React.lazy(() => import("MfeUsa/MfeUsa"));
 
 export default function () {
-
-  const user = useSelector((state) => state.user);
-  console.log('Host State store:', store.getState()?.user?.name);
   const dispatch = useDispatch();
-
+  const [isLoading, setIsLoading] = React.useState(false);
   const setUserDetails = () => {
     dispatch({ type: 'SET_USER', payload: { name: 'Angad Yadav 11' } });
   };
@@ -22,6 +19,7 @@ export default function () {
     ];
 
     const fetchCountryData = async (country) => {
+      setIsLoading(true);
       const response = await fetch('https://countriesnow.space/api/v0.1/countries/population', {
         method: 'POST',
         headers: {
@@ -49,7 +47,10 @@ export default function () {
               // Handle error if needed
             }
           })
-        );
+        ).then(() => {
+          console.log('All countries data fetched successfully');
+          setIsLoading(false);
+        });
       } catch (error) {
         // Handle error if needed
       }
@@ -68,7 +69,8 @@ export default function () {
         justifyContent: 'space-around',
       }}>
         <MFEIndia />
-        <Button onClick={() => setUserDetails()}>Set {store.getState()?.user?.name}</Button>
+        <MFEUSA />
+        {/* <Button onClick={() => setUserDetails()}>Set {store.getState()?.user?.name}</Button> */}
       </Card >
     </React.Suspense>
   );

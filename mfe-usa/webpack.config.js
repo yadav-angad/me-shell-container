@@ -65,6 +65,14 @@ module.exports = {
           singleton: true,
           requiredVersion: dependencies["@mui/icons-material"]
         },
+        "redux": {
+          singleton: true,
+          requiredVersion: dependencies.redux
+        },
+        "react-redux": {
+          singleton: true,
+          requiredVersion: dependencies["react-redux"]
+        }
       }
     })
   ],

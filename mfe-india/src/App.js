@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Box, Card, Button } from "@mui/material";
+import { Box, Card, Button, Alert } from "@mui/material";
 import { CommonContext } from "host/context/CommonContext";
 import { store } from 'host/store';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,7 +15,8 @@ export default function () {
   console.log('MFE Store countryData:', countryData['India']);
 
   return (
-    <Card sx={{ width: '20%', height: '100%' }}>
+    <Card sx={{ width: '20%', height: 'calc(100vh - 140px)', backgroundColor: '#f5f5f5', padding: '10px' }}>
+      <Alert severity="info">{'MFE 1 getting data from Host'}</Alert>
       <Box>
         <Button onClick={() => dispatch({ type: 'SET_USER', payload: { name: 'Amyra' } })}>Set User</Button>
         {/* {'Hello ' + user.name} */}

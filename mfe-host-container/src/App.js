@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card } from "@mui/material";
 import { useSelector, useDispatch } from 'react-redux';
 import { store } from './store/store';
+import Header from "./Header";
 const MFEIndia = React.lazy(() => import("MfeIndia/MfeIndia"));
 const MFEUSA = React.lazy(() => import("MfeUsa/MfeUsa"));
 
@@ -61,12 +62,16 @@ export default function () {
 
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
+      <Card>
+        <Header />
+      </Card>
       <Card sx={{
         width: '100%',
-        height: '100%',
+        height: 'calc(100vh - 120px)',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-around',
+        padding: '20px',
       }}>
         <MFEIndia />
         <MFEUSA />
